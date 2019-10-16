@@ -1,0 +1,129 @@
+SiteBackendBundle_user:
+    resource: "@SiteBackendBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+SiteBackendBundle_group:
+    resource: "@SiteBackendBundle/Resources/config/routing/group.yml"
+    prefix:   /group
+
+SiteBackendBundle_question:
+    resource: "@SiteBackendBundle/Resources/config/routing/question.yml"
+    prefix:   /question
+
+SiteBackendBundle_question_round:
+    resource: "@SiteBackendBundle/Resources/config/routing/questionround.yml"
+    prefix:   /question-round
+
+SiteBackendBundle_question_subject:
+    resource: "@SiteBackendBundle/Resources/config/routing/questionsubject.yml"
+    prefix:   /question-subject
+
+SiteBackendBundle_possible_answer:
+    resource: "@SiteBackendBundle/Resources/config/routing/possibleanswer.yml"
+    prefix:   /possible-answer
+
+SiteBackendBundle_free_questions:
+    pattern:  /free-questions
+    defaults: { _controller: SiteBackendBundle:QuestionSubject:freeList }
+
+SiteBackendBundle_free_questions_distribution:
+    pattern:  /free-questions-distribution
+    defaults: { _controller: SiteBackendBundle:Question:distribution }
+
+backend_homepage:
+    pattern:  /
+    defaults: { _controller: SiteBackendBundle:Default:index }
+
+backend_homepage_menu:
+    pattern:  /fragment/menu/
+    defaults: { _controller: SiteBackendBundle:Default:menu }
+
+backend_file_manager:
+    pattern:  /file-manager/tinymce/
+    defaults: { _controller: SiteBackendBundle:Default:fileManager}
+
+#API
+api_auth:
+    pattern:  /api/auth
+    defaults: { _controller: SiteBackendBundle:Api:auth }
+    methods: [POST]
+
+api_add_user:
+    pattern:  /api/add-user
+    defaults: { _controller: SiteBackendBundle:Api:addUser }
+    methods: [POST]
+
+api_deactivate_user:
+    pattern:  /api/deactivate-user
+    defaults: { _controller: SiteBackendBundle:Api:deactivateUser }
+    methods: [POST]
+
+api_activate_user:
+    pattern:  /api/activate-user
+    defaults: { _controller: SiteBackendBundle:Api:activateUser }
+    methods: [POST]
+
+api_get_all_subjects:
+    pattern:  /api/subjects
+    defaults: { _controller: SiteBackendBundle:Api:getAllSubjects }
+    methods: [POST]
+
+api_get_all_rounds_of_subject:
+    pattern:  /api/rounds-of-subject/{id}
+    defaults: { _controller: SiteBackendBundle:Api:getAllRoundsOfSubject }
+    methods: [POST]
+
+api_get_all_questions_of_round:
+    pattern:  /api/questions-of-round/{id}
+    defaults: { _controller: SiteBackendBundle:Api:getAllQuestionsWithPossiblesAnswers }
+    methods: [POST]
+
+api_get_all_questions_battle_of_the_day:
+    pattern: /api/question-battle-of-the-day/
+    defaults: { _controller: SiteBackendBundle:Api:getAllQuestionsBattleOfTheDay  }
+    methods: [POST]
+
+api_set_answer:
+    pattern:  /api/set-answer/{id}
+    defaults: { _controller: SiteBackendBundle:Api:setAnswer }
+    methods: [POST]
+
+api_get_random_rival:
+    pattern:  /api/get-random-rival
+    defaults: { _controller: SiteBackendBundle:Api:getRandomRival }
+    methods: [POST]
+
+api_get_all_users:
+    pattern:  /api/get-all-users
+    defaults: { _controller: SiteBackendBundle:Api:getAllUsers }
+    methods: [POST]
+
+api_challenge:
+    pattern:  /api/challenge/{userId}
+    defaults: { _controller: SiteBackendBundle:Api:challenge }
+    methods: [POST]
+
+api_get_fight_status:
+    pattern:  /api/get-fight-status/{fightId}
+    defaults: { _controller: SiteBackendBundle:Api:getFightStatus }
+    methods: [POST]
+
+api_get_fight_questions:
+    pattern:  /api/get-fight-questions/{fightId}
+    defaults: { _controller: SiteBackendBundle:Api:getQuestionsListForFight }
+    methods: [POST]
+
+api_get_fight_results:
+    pattern:  /api/get-fight-results/{fightId}
+    defaults: { _controller: SiteBackendBundle:Api:getFightResults }
+    methods: [POST]
+
+api_get_challenge_response:
+    pattern:  /api/challenge-response/{fightId}
+    defaults: { _controller: SiteBackendBundle:Api:challengeResponse }
+    methods: [POST]
+
+api_get_all_shop:
+    pattern: /api/get-all-shop
+    defaults: {_controller: SiteBackendBundle:Api:getAllShop}
+    methods: [POST]
